@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Plus Jakarta Sans Variable", var(--font-sans);
+
+    /* Marca Plomefy — tomados del logo */
+    --navy: 210 100% 21%; /* #00336d */
+    --navy-deep: 212 100% 14%;
+    --teal: 175 99% 36%; /* #01b9ae */
+    --aqua: 199 100% 44%; /* #00a0e0 */
+
+    --background: 0 0% 100%;
+    --foreground: 212 45% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 212 45% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 212 45% 14%;
+    --primary: 210 100% 21%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 200 30% 96%;
+    --secondary-foreground: 210 100% 21%;
+    --muted: 205 25% 96%;
+    --muted-foreground: 211 18% 42%;
+    --accent: 175 99% 36%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 208 30% 89%;
+    --input: 208 30% 89%;
+    --ring: 175 99% 36%;
+    --radius: 0.85rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: hsl(var(--teal) / 0.25);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1180px] px-5 sm:px-6 lg:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-teal/25 bg-teal/10 px-3 py-1 text-[13px] font-semibold text-navy;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .h2 {
+    @apply font-display text-[26px] font-bold leading-[1.2] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px];
+  }
+
+  .lead {
+    @apply text-[16px] leading-relaxed text-slate-600 sm:text-[17px];
+  }
+
+  .card-soft {
+    @apply rounded-2xl border border-slate-200/90 bg-white p-6 shadow-[0_1px_2px_rgba(16,40,70,.04),0_8px_24px_-16px_rgba(16,40,70,.18)] transition duration-200;
+  }
+
+  .card-soft:hover {
+    @apply -translate-y-0.5 border-teal/40 shadow-[0_2px_4px_rgba(16,40,70,.05),0_18px_36px_-20px_rgba(0,51,109,.35)];
+  }
+}
+
+/* Malla sutil de fondo para el hero */
+.hero-grid {
+  background-image: linear-gradient(hsl(var(--navy) / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--navy) / 0.055) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
