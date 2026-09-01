@@ -1,7 +1,7 @@
 import { CalendarCheck, MapPin, ReceiptText, ShieldCheck } from "lucide-react"
 import { CallButton, WhatsappButton } from "@/components/cta-buttons"
 import { PipeDrop } from "@/components/icons"
-import { SITE, WA_MESSAGES, waLink } from "@/lib/site"
+import { PHONE_DISPLAY, SITE, WA_MESSAGES, telLink, waLink } from "@/lib/site"
 
 const QUICK = [
   { label: "Cañería tapada", msg: "Hola, tengo una cañería tapada en mi casa en Quito." },
@@ -52,6 +52,15 @@ export function HeroSection() {
             <WhatsappButton message={WA_MESSAGES.hero} label="Solicitar plomero" />
             <CallButton />
           </div>
+
+          {/* Número en texto plano: Google Ads lo verifica al revisar la landing. */}
+          <p className="mt-4 text-[15px] text-slate-600">
+            O llámanos al{" "}
+            <a href={telLink} className="font-semibold text-navy hover:text-teal">
+              {PHONE_DISPLAY}
+            </a>{" "}
+            · {SITE.scheduleShort}
+          </p>
 
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
             {BADGES.map(({ icon: Icon, text }) => (
