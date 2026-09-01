@@ -17,7 +17,7 @@ export const SITE = {
   city: "Quito",
   region: "Pichincha",
   country: "EC",
-  url: "https://plomefy-quito.vercel.app",
+  url: "https://plomefy-web.vercel.app",
   email: "info@plomefy.com",
   schedule: "Atendemos los 7 días · 7:30 a 19:30",
   scheduleShort: "7 días · 7:30–19:30",
@@ -26,10 +26,15 @@ export const SITE = {
 
 /* ---------------------------------- Contacto --------------------------------- */
 
-/** Número operativo vigente. Ver plodo-datos-confirmados.md. */
-export const PHONE_E164 = "+593982811068"
-export const PHONE_DISPLAY = "098 281 1068"
-export const WHATSAPP_NUMBER = "593982811068"
+/**
+ * Número operativo vigente. Ver plodo-datos-confirmados.md.
+ * Reemplaza al +593 98 281 1068 desde el 31 de agosto de 2026.
+ * Se muestra también en texto plano (hero y footer) para que Google Ads
+ * lo valide al revisar la landing como recurso de llamada.
+ */
+export const PHONE_E164 = "+593982282941"
+export const PHONE_DISPLAY = "098 228 2941"
+export const WHATSAPP_NUMBER = "593982282941"
 
 /**
  * Cada sección usa un saludo distinto a propósito: decenas de mensajes
