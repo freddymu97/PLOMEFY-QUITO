@@ -3,19 +3,32 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, Phone, X } from "lucide-react"
 import { WhatsappButton } from "@/components/cta-buttons"
 import { PHONE_DISPLAY, SITE, WA_MESSAGES, telLink } from "@/lib/site"
 import { cn } from "@/lib/utils"
+import { DESTAPEFY_MESSAGES, DESTAPEFY_PATH } from "@/lib/destapefy"
 
 const NAV = [
   { href: "#servicios", label: "Servicios" },
+  { href: DESTAPEFY_PATH, label: "Destapefy" },
   { href: "#como-funciona", label: "Cómo funciona" },
   { href: "#cobertura", label: "Cobertura" },
   { href: "#preguntas", label: "Preguntas" },
 ]
 
 export function SiteHeader() {
+  const isDestapefy = usePathname() === DESTAPEFY_PATH
+  const nav = isDestapefy
+    ? [
+        { href: "#servicios", label: "Destapes" },
+        { href: "#tarifas", label: "Tarifas" },
+        { href: "#cobertura", label: "Cobertura" },
+        { href: "#preguntas", label: "Preguntas" },
+      ]
+    : NAV
+  const message = isDestapefy ? DESTAPEFY_MESSAGES.header : WA_MESSAGES.hero
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -32,6 +45,14 @@ export function SiteHeader() {
       document.body.style.overflow = ""
     }
   }, [open])
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false)
+    }
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [])
 
   return (
     <header className="sticky top-0 z-50">
@@ -56,7 +77,7 @@ export function SiteHeader() {
         )}
       >
         <div className="container-page flex h-16 items-center gap-4 lg:h-[72px]">
-          <Link href="/" className="shrink-0" aria-label="Plomefy — inicio">
+          <Link href="/" onClick={() => setOpen(false)} className="shrink-0" aria-label="Plomefy — inicio">
             <Image
               src="/plomefy-logo.png"
               alt="Plomefy, plomería a domicilio en Quito"
@@ -67,8 +88,8 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav className="ml-auto hidden items-center gap-7 lg:flex">
-            {NAV.map((item) => (
+          <nav aria-label="Navegación principal" className="ml-auto hidden items-center gap-5 lg:flex">
+            {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
@@ -87,12 +108,13 @@ export function SiteHeader() {
               <Phone className="h-4 w-4" />
               {PHONE_DISPLAY}
             </a>
-            <WhatsappButton message={WA_MESSAGES.hero} label="WhatsApp" size="md" className="hidden sm:inline-flex" />
+            <WhatsappButton message={message} label="WhatsApp" size="md" location="header" className="hidden sm:inline-flex" />
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={open}
+              aria-controls="menu-movil"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-navy lg:hidden"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -103,9 +125,9 @@ export function SiteHeader() {
 
       {/* Menú móvil */}
       {open && (
-        <div className="border-b border-slate-200 bg-white lg:hidden">
-          <nav className="container-page flex flex-col py-2">
-            {NAV.map((item) => (
+        <div id="menu-movil" className="border-b border-slate-200 bg-white lg:hidden">
+          <nav aria-label="Navegación móvil" className="container-page flex flex-col py-2">
+            {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
@@ -116,7 +138,7 @@ export function SiteHeader() {
               </a>
             ))}
             <div className="flex flex-col gap-2.5 py-4">
-              <WhatsappButton message={WA_MESSAGES.hero} />
+              <WhatsappButton message={isDestapefy ? DESTAPEFY_MESSAGES.mobileMenu : WA_MESSAGES.hero} location="mobile-menu" />
               <a
                 href={telLink}
                 className="inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full border border-navy/20 font-semibold text-navy"

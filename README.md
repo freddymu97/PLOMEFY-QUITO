@@ -104,18 +104,45 @@ Si agregas CTAs nuevos, dales su propia variante en `WA_MESSAGES`.
 - `robots.txt` y `sitemap.xml`.
 - `lang="es-EC"`, Open Graph, favicon.
 
-**Importante:** cuando el sitio tenga dominio propio, cambia `SITE.url` en `lib/site.ts`.
-De ahí salen el canonical, el sitemap y el schema.
+El dominio principal es `https://www.plomeroadomicilioquito.com`, definido en `SITE.url`
+en `lib/site.ts`. De ahí salen los canonical, el sitemap y los datos estructurados.
+
+### Destapefy
+
+La subpágina `/destapedecaneriasquito` presenta Destapefy, el servicio de destapes de Plomefy,
+con la misma identidad gráfica y el mismo número operativo. Su contenido, preguntas frecuentes,
+mensajes de WhatsApp y tarifa inicial confirmada **desde $45 USD** están en `lib/destapefy.ts`.
+El diseño está en `components/destapefy-landing.tsx` y el SEO de la ruta en
+`app/destapedecaneriasquito/page.tsx`. Cada página tiene su propio canonical y FAQ;
+la entidad Plumber de Plomefy se comparte mediante un identificador estable.
+La distribución de la keyword reina y sus variantes, contrastada con el estudio
+de marca aportado, está documentada en [docs/destapefy-seo.md](docs/destapefy-seo.md).
+
+El importe es una tarifa inicial: el precio final se confirma según el tipo de destape,
+acceso y alcance. No se han añadido precios por categoría ni políticas de visita,
+materiales o impuestos sin confirmar.
+
+Los clics de contacto generan en `window.dataLayer` el evento `contact_click`, con
+`contact_method` (`whatsapp` o `phone`), `service_name`, `page_path` y `cta_location`.
+Son eventos de intención de contacto; para enviarlos a Google Ads o GA4 hay que conectar
+el contenedor o propiedad real y configurar las etiquetas. No se carga un ID inventado.
 
 ---
 
 ## 🧑‍💻 Correr el proyecto en local
 
 ```bash
-npm install
-npm run dev     # http://localhost:3000
-npm run build   # verificar que compila antes de publicar
+pnpm install --frozen-lockfile
+pnpm dev
+pnpm typecheck
+pnpm build
 ```
+
+Para probar SEO contra la aplicación compilada, inicia `pnpm start --port 3001`
+y, en otra terminal, ejecuta `pnpm test:seo`. El test comprueba canonical, metadatos,
+FAQ por ruta, precio inicial, schema del servicio, enlaces internos, robots y sitemap.
+Puedes usar `TEST_BASE_URL` para señalar otro servidor local.
+No ejecutes desarrollo y compilación al mismo tiempo: ambos escriben en `.next`.
 
 ---
 

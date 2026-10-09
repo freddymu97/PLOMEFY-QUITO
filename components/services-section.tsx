@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react"
+import Link from "next/link"
 import {
   Droplets,
   Flame,
@@ -11,6 +12,7 @@ import {
 } from "lucide-react"
 import { WhatsappButton } from "@/components/cta-buttons"
 import { SERVICES, WA_MESSAGES } from "@/lib/site"
+import { DESTAPEFY_PATH } from "@/lib/destapefy"
 
 const ICONS: Record<string, LucideIcon> = {
   pipe: Waves,
@@ -54,6 +56,11 @@ export function ServicesSection() {
                     </li>
                   ))}
                 </ul>
+                {service.slug === "destape-de-canerias" && (
+                  <Link href={DESTAPEFY_PATH} className="mt-5 text-[14px] font-semibold text-navy underline decoration-teal decoration-2 underline-offset-4">
+                    Destape de cañerías en Quito con Destapefy →
+                  </Link>
+                )}
               </article>
             )
           })}

@@ -17,7 +17,7 @@ export const SITE = {
   city: "Quito",
   region: "Pichincha",
   country: "EC",
-  url: "https://plomefy-web.vercel.app",
+  url: "https://www.plomeroadomicilioquito.com",
   email: "info@plomefy.com",
   schedule: "Atendemos los 7 días · 7:30 a 19:30",
   scheduleShort: "7 días · 7:30–19:30",
