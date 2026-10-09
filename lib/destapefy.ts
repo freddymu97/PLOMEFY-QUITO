@@ -11,7 +11,7 @@ export const DESTAPEFY = {
   tagline: "Destapes de Plomefy",
   title: "Destape de cañerías en Quito | Destapefy · Plomefy",
   description:
-    `Destape de cañerías en Quito desde $${DESTAPEFY_STARTING_PRICE} con Destapefy, de Plomefy. Inodoros, lavabos y duchas. Cotiza por WhatsApp. Atención los 7 días, 7:30 a 19:30.`,
+    `Destape de cañerías en Quito desde $${DESTAPEFY_STARTING_PRICE}. Tuberías, desagües, inodoros y fregaderos con Destapefy de Plomefy. Cotiza por WhatsApp. Atención los 7 días.`,
 } as const
 
 export const DESTAPEFY_MESSAGES = {
@@ -177,12 +177,12 @@ export const DESTAPEFY_PRICE_FACTORS = [
 
 export const DESTAPEFY_FAQS: { q: string; a: string }[] = [
   {
-    q: "¿Qué es Destapefy y qué relación tiene con Plomefy?",
-    a: "Destapefy es el servicio de destapes de Plomefy en Quito. Atiende cañerías, fregaderos, inodoros, lavabos, duchas, bajantes y cajas de revisión, con presupuesto antes de iniciar el trabajo.",
-  },
-  {
     q: "¿Cuánto cuesta un destape de cañerías en Quito?",
     a: `Los destapes de cañerías tienen una tarifa desde $${DESTAPEFY_STARTING_PRICE} USD. El precio final depende del tipo de destape, el acceso a la instalación y el alcance de la obstrucción. Cuéntanos qué está tapado y en qué sector estás para consultar tu caso. En sitio revisamos el problema y confirmamos el presupuesto antes de empezar. Consulta qué incluye el presupuesto antes de aprobarlo.`,
+  },
+  {
+    q: "¿Puedo contratar un destapador de cañerías a domicilio en Quito?",
+    a: "Sí. Nuestro servicio de destapacaños a domicilio en Quito atiende cañerías, inodoros, fregaderos, lavabos y duchas. Cuéntanos qué está tapado y tu sector para coordinar la revisión y confirmar el presupuesto antes de iniciar.",
   },
   {
     q: "¿Destapan las cañerías sin romper?",
@@ -207,5 +207,9 @@ export const DESTAPEFY_FAQS: { q: string; a: string }[] = [
   {
     q: "¿Puedo solicitar un destape para un local o edificio?",
     a: "Sí. Atendemos casas, departamentos, oficinas, locales y edificios, incluidos trabajos en bajantes y cajas de revisión. Indica si hay varios desagües afectados y qué puntos de acceso están disponibles para coordinar la revisión.",
+  },
+  {
+    q: "¿Qué es Destapefy y qué relación tiene con Plomefy?",
+    a: "Destapefy es el servicio de destapes de Plomefy en Quito. Atiende cañerías, fregaderos, inodoros, lavabos, duchas, bajantes y cajas de revisión, con presupuesto antes de iniciar el trabajo.",
   },
 ]

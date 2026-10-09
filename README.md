@@ -115,6 +115,8 @@ mensajes de WhatsApp y tarifa inicial confirmada **desde $45 USD** están en `li
 El diseño está en `components/destapefy-landing.tsx` y el SEO de la ruta en
 `app/destapedecaneriasquito/page.tsx`. Cada página tiene su propio canonical y FAQ;
 la entidad Plumber de Plomefy se comparte mediante un identificador estable.
+La distribución de la keyword reina y sus variantes, contrastada con el estudio
+de marca aportado, está documentada en [docs/destapefy-seo.md](docs/destapefy-seo.md).
 
 El importe es una tarifa inicial: el precio final se confirma según el tipo de destape,
 acceso y alcance. No se han añadido precios por categoría ni políticas de visita,

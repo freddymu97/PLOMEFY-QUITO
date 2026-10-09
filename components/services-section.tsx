@@ -58,7 +58,7 @@ export function ServicesSection() {
                 </ul>
                 {service.slug === "destape-de-canerias" && (
                   <Link href={DESTAPEFY_PATH} className="mt-5 text-[14px] font-semibold text-navy underline decoration-teal decoration-2 underline-offset-4">
-                    Ver destapes con Destapefy →
+                    Destape de cañerías en Quito con Destapefy →
                   </Link>
                 )}
               </article>

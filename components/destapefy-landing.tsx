@@ -81,7 +81,8 @@ function DestapefyHero() {
               Destape de cañerías en <span className="text-[#00857d]">Quito</span>
             </h1>
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-slate-600 sm:text-lg">
-              ¿El agua no baja? Destapamos cañerías, fregaderos, inodoros y duchas en tu domicilio.
+              ¿El agua no baja? Nuestro servicio de destape de cañerías en Quito atiende
+              fregaderos, inodoros y duchas en tu domicilio.
               Revisamos el problema, te damos un presupuesto claro y empezamos con tu aprobación.
             </p>
 
@@ -161,9 +162,9 @@ function DestapefyServices() {
       <div className="container-page">
         <div className="max-w-2xl">
           <p className="eyebrow">Qué destapamos</p>
-          <h2 id="destapefy-services-title" className="h2 mt-4">Un servicio para cada desagüe tapado</h2>
+          <h2 id="destapefy-services-title" className="h2 mt-4">Destape de tuberías y desagües en Quito</h2>
           <p className="lead mt-4">
-            Destapes para casas, departamentos, oficinas, locales y edificios.
+            Destapamos tuberías de desagüe en casas, departamentos, oficinas, locales y edificios.
             Revisamos el punto afectado y elegimos el acceso según tu instalación.
           </p>
         </div>
@@ -197,9 +198,9 @@ function DestapefyServices() {
 
         <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-teal/20 bg-teal/[0.05] px-6 py-7 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-xl">
-            <h3 className="font-display text-[18px] font-bold text-navy">Sonda eléctrica, sin romper cuando se puede</h3>
+            <h3 className="font-display text-[18px] font-bold text-navy">Destape de cañerías sin romper, cuando la instalación lo permite</h3>
             <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
-              Trabajamos por los accesos existentes cuando la instalación lo permite.
+              Usamos sonda eléctrica para el destape de tuberías por los accesos existentes cuando corresponde.
               Si hace falta otra intervención, te la explicamos antes de empezar.
             </p>
           </div>
@@ -263,7 +264,7 @@ function DestapefyPricing() {
       <div className="container-page">
         <div className="max-w-2xl">
           <p className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-3 py-1 text-[13px] font-semibold text-white">Cotización clara</p>
-          <h2 id="destapefy-pricing-title" className="h2 mt-4 text-white">Tarifas por tipo de destape</h2>
+          <h2 id="destapefy-pricing-title" className="h2 mt-4 text-white">Precio de destape de cañerías en Quito</h2>
           <p className="mt-5 font-display text-[30px] font-extrabold text-white sm:text-[38px]">
             Destapes desde ${DESTAPEFY_STARTING_PRICE} <span className="text-base font-semibold text-white/75">USD</span>
           </p>
@@ -329,6 +330,8 @@ function DestapefyCoverage() {
           <p className="eyebrow">Cobertura</p>
           <h2 id="destapefy-coverage-title" className="h2 mt-4">Destapes en Quito norte, centro, sur y valles</h2>
           <p className="lead mt-4">
+            Llevamos nuestro servicio de destape de cañerías a Quito norte, centro y sur,
+            Cumbayá, Tumbaco y el Valle de los Chillos.{" "}
             Comparte tu ubicación para coordinar la visita y confirmar la disponibilidad en tu sector.
             Atendemos de lunes a domingo, de 7:30 a 19:30.
           </p>
