@@ -15,11 +15,15 @@ export function WhatsappButton({
   label = "Escribir por WhatsApp",
   size = "lg",
   className,
+  location,
+  service,
 }: {
   message: string
   label?: string
   size?: Size
   className?: string
+  location?: string
+  service?: string
 }) {
   return (
     <a
@@ -27,8 +31,10 @@ export function WhatsappButton({
       target="_blank"
       rel="noopener noreferrer"
       data-cta="whatsapp"
+      data-cta-location={location}
+      data-service={service}
       className={cn(
-        "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-whatsapp font-semibold text-white",
+        "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-whatsapp font-semibold text-navy",
         "shadow-[0_10px_24px_-10px_rgba(37,211,102,.9)] transition hover:brightness-[0.95] active:scale-[.99]",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-whatsapp",
         sizes[size],
@@ -46,16 +52,22 @@ export function CallButton({
   size = "lg",
   variant = "outline",
   className,
+  location,
+  service,
 }: {
   label?: string
   size?: Size
   variant?: "outline" | "solid"
   className?: string
+  location?: string
+  service?: string
 }) {
   return (
     <a
       href={telLink}
       data-cta="phone"
+      data-cta-location={location}
+      data-service={service}
       className={cn(
         "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full font-semibold transition active:scale-[.99]",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy",
