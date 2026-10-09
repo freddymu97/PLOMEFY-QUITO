@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Mail, MapPin, Phone } from "lucide-react"
 import { PHONE_DISPLAY, SERVICES, SITE, ZONES, telLink } from "@/lib/site"
 import { DESTAPEFY_PATH } from "@/lib/destapefy"
+import { DETECFY_PATH } from "@/lib/detecfy"
 
 export function SiteFooter() {
   const year = new Date().getFullYear()
@@ -31,10 +32,10 @@ export function SiteFooter() {
             {SERVICES.map((s) => (
               <li key={s.slug}>
                 <Link
-                  href={s.slug === "destape-de-canerias" ? DESTAPEFY_PATH : "/#servicios"}
+                  href={s.slug === "destape-de-canerias" ? DESTAPEFY_PATH : s.slug === "deteccion-de-fugas" ? DETECFY_PATH : "/#servicios"}
                   className="text-[14px] text-slate-600 transition-colors hover:text-navy"
                 >
-                  {s.slug === "destape-de-canerias" ? "Destapefy · Destape de cañerías en Quito" : s.title}
+                  {s.slug === "destape-de-canerias" ? "Destapefy · Destape de cañerías en Quito" : s.slug === "deteccion-de-fugas" ? "Detecfy · Detección de fugas de agua en Quito" : s.title}
                 </Link>
               </li>
             ))}

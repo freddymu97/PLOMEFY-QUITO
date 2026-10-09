@@ -13,6 +13,7 @@ import {
 import { WhatsappButton } from "@/components/cta-buttons"
 import { SERVICES, WA_MESSAGES } from "@/lib/site"
 import { DESTAPEFY_PATH } from "@/lib/destapefy"
+import { DETECFY_PATH } from "@/lib/detecfy"
 
 const ICONS: Record<string, LucideIcon> = {
   pipe: Waves,
@@ -59,6 +60,11 @@ export function ServicesSection() {
                 {service.slug === "destape-de-canerias" && (
                   <Link href={DESTAPEFY_PATH} className="mt-5 text-[14px] font-semibold text-navy underline decoration-teal decoration-2 underline-offset-4">
                     Destape de cañerías en Quito con Destapefy →
+                  </Link>
+                )}
+                {service.slug === "deteccion-de-fugas" && (
+                  <Link href={DETECFY_PATH} className="mt-5 text-[14px] font-semibold text-navy underline decoration-teal decoration-2 underline-offset-4">
+                    Detección de fugas de agua en Quito con Detecfy →
                   </Link>
                 )}
               </article>

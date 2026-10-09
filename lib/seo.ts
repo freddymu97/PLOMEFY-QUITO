@@ -55,7 +55,7 @@ export const siteSchema = {
       "@id": BUSINESS_ID,
       name: SITE.brand,
       description:
-        "Servicio de plomería a domicilio en Quito: destape de cañerías, reparación de fugas de agua, sanitarios, grifería, calefones y duchas eléctricas.",
+        "Servicio de plomería a domicilio en Quito: destape de cañerías, detección y reparación de fugas de agua, sanitarios, grifería, calefones y duchas eléctricas.",
       url: `${SITE.url}/`,
       telephone: PHONE_E164,
       image: `${SITE.url}/plomefy-logo.png`,

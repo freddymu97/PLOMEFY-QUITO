@@ -5,6 +5,7 @@ import { test } from "node:test"
 const base = process.env.TEST_BASE_URL || "http://127.0.0.1:3001"
 const domain = "https://www.plomeroadomicilioquito.com"
 const path = "/destapedecaneriasquito"
+const detecfyPath = "/detecciondefugasdeaguaquito"
 
 async function responseText(pathname) {
   const response = await fetch(new URL(pathname, base))
@@ -33,7 +34,7 @@ function checkMetadata(html, canonical, title) {
   assert.doesNotMatch(html, /plomefy-web\.vercel\.app/, "production SEO must not reference preview origin")
 }
 
-test("home retains its own SEO and links visitors to Destapefy", async () => {
+test("home retains its own SEO and links visitors to both service pages", async () => {
   const html = await responseText("/")
   checkMetadata(html, `${domain}/`, "Plomero a domicilio en Quito | Plomefy · plomería, destapes y fugas")
   const data = schemas(html)
@@ -43,6 +44,8 @@ test("home retains its own SEO and links visitors to Destapefy", async () => {
   assert.equal(faqs[0].url, `${domain}/`)
   assert.ok(!faqs[0].mainEntity.some((question) => question.name.includes("¿Qué es Destapefy")))
   assert.ok(html.includes(`href="${path}"`), "subpage must be linked from the main site")
+  assert.ok(html.includes(`href="${detecfyPath}"`), "Detecfy must be linked from the main site")
+  assert.ok(!faqs[0].mainEntity.some((question) => question.name.includes("Detecfy")))
 })
 
 test("Destapefy exposes independent SEO, truthful starting price and linked business data", async () => {
@@ -73,11 +76,47 @@ test("Destapefy exposes independent SEO, truthful starting price and linked busi
   assert.doesNotMatch(html, /24 horas|lowticket|hidrojet|testimonios inventados/i)
 })
 
-test("crawler routes list the main domain and the Destapefy service", async () => {
+test("Detecfy exposes its own local-service SEO and matching visible FAQ content", async () => {
+  const html = await responseText(detecfyPath)
+  checkMetadata(html, `${domain}${detecfyPath}`, "Detección de fugas de agua en Quito | Detecfy · Plomefy")
+  assert.match(html, /098 228 2941/)
+  const data = schemas(html)
+  const businesses = data.filter((item) => item["@type"] === "Plumber")
+  const services = data.filter((item) => item["@type"] === "Service")
+  const faqs = data.filter((item) => item["@type"] === "FAQPage")
+  assert.equal(businesses.length, 1)
+  assert.equal(services.length, 1)
+  assert.equal(faqs.length, 1, "FAQs from other pages must not leak into Detecfy")
+  assert.equal(services[0].url, `${domain}${detecfyPath}`)
+  assert.equal(services[0].offers.priceSpecification.minPrice, 39)
+  assert.equal(services[0].offers.priceSpecification.priceCurrency, "USD")
+  assert.equal(services[0].offers.price, undefined, "starting price must not be a fixed-price promise")
+  assert.equal(services[0].provider["@id"], businesses[0]["@id"])
+  assert.equal(services[0].availableChannel.servicePhone.telephone, "+593982282941")
+  assert.equal(faqs[0].url, `${domain}${detecfyPath}`)
+  assert.ok(faqs[0].mainEntity.some((question) => /cuánto cuesta/i.test(question.name)))
+  assert.ok(faqs[0].mainEntity.some((question) => question.acceptedAnswer.text.includes("$39")))
+  assert.ok(faqs[0].mainEntity.some((question) => /geófono/i.test(question.name)))
+  assert.ok(faqs[0].mainEntity.some((question) => /cámara termográfica/i.test(question.name)))
+  for (const question of faqs[0].mainEntity) {
+    assert.ok(html.includes(question.name), "structured questions must be rendered")
+    assert.ok(html.includes(question.acceptedAnswer.text), "structured answers must be rendered")
+    assert.ok(!question.name.includes("destape"), "FAQ must address detection intent")
+  }
+  const breadcrumb = data.find((item) => item["@type"] === "BreadcrumbList")
+  assert.equal(breadcrumb.itemListElement.at(-1).item, `${domain}${detecfyPath}`)
+  assert.equal(businesses[0].openingHoursSpecification[0].opens, "07:30")
+  assert.equal(businesses[0].openingHoursSpecification[0].closes, "19:30")
+  assert.equal(data.filter((item) => item["@type"] === "AggregateRating").length, 0)
+  assert.doesNotMatch(html, /24 horas|lowticket|desde \$45/i)
+})
+
+test("crawler routes list the main domain and both service pages", async () => {
   const [robots, sitemap] = await Promise.all([responseText("/robots.txt"), responseText("/sitemap.xml")])
   assert.ok(robots.includes(`Sitemap: ${domain}/sitemap.xml`))
   assert.ok(robots.includes("Allow: /"))
   assert.ok(sitemap.includes(`<loc>${domain}</loc>`))
   assert.ok(sitemap.includes(`<loc>${domain}${path}</loc>`))
+  assert.ok(sitemap.includes(`<loc>${domain}${detecfyPath}</loc>`))
   assert.doesNotMatch(robots + sitemap, /vercel\.app/)
 })

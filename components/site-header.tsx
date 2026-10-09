@@ -9,26 +9,31 @@ import { WhatsappButton } from "@/components/cta-buttons"
 import { PHONE_DISPLAY, SITE, WA_MESSAGES, telLink } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { DESTAPEFY_MESSAGES, DESTAPEFY_PATH } from "@/lib/destapefy"
+import { DETECFY_MESSAGES, DETECFY_PATH } from "@/lib/detecfy"
 
 const NAV = [
   { href: "#servicios", label: "Servicios" },
   { href: DESTAPEFY_PATH, label: "Destapefy" },
+  { href: DETECFY_PATH, label: "Detecfy" },
   { href: "#como-funciona", label: "Cómo funciona" },
   { href: "#cobertura", label: "Cobertura" },
   { href: "#preguntas", label: "Preguntas" },
 ]
 
 export function SiteHeader() {
-  const isDestapefy = usePathname() === DESTAPEFY_PATH
-  const nav = isDestapefy
+  const pathname = usePathname()
+  const isDestapefy = pathname === DESTAPEFY_PATH
+  const isDetecfy = pathname === DETECFY_PATH
+  const serviceMessages = isDetecfy ? DETECFY_MESSAGES : isDestapefy ? DESTAPEFY_MESSAGES : null
+  const nav = serviceMessages
     ? [
-        { href: "#servicios", label: "Destapes" },
+        { href: "#servicios", label: isDetecfy ? "Detección" : "Destapes" },
         { href: "#tarifas", label: "Tarifas" },
         { href: "#cobertura", label: "Cobertura" },
         { href: "#preguntas", label: "Preguntas" },
       ]
     : NAV
-  const message = isDestapefy ? DESTAPEFY_MESSAGES.header : WA_MESSAGES.hero
+  const message = serviceMessages?.header ?? WA_MESSAGES.hero
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -88,7 +93,7 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav aria-label="Navegación principal" className="ml-auto hidden items-center gap-5 lg:flex">
+          <nav aria-label="Navegación principal" className="ml-auto hidden items-center gap-4 lg:flex">
             {nav.map((item) => (
               <a
                 key={item.href}
@@ -138,7 +143,7 @@ export function SiteHeader() {
               </a>
             ))}
             <div className="flex flex-col gap-2.5 py-4">
-              <WhatsappButton message={isDestapefy ? DESTAPEFY_MESSAGES.mobileMenu : WA_MESSAGES.hero} location="mobile-menu" />
+              <WhatsappButton message={serviceMessages?.mobileMenu ?? WA_MESSAGES.hero} location="mobile-menu" />
               <a
                 href={telLink}
                 className="inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full border border-navy/20 font-semibold text-navy"

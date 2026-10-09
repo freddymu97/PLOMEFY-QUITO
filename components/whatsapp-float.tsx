@@ -6,10 +6,13 @@ import { Phone } from "lucide-react"
 import { WhatsappIcon } from "@/components/icons"
 import { PHONE_DISPLAY, WA_MESSAGES, telLink, waLink } from "@/lib/site"
 import { DESTAPEFY_MESSAGES, DESTAPEFY_PATH } from "@/lib/destapefy"
+import { DETECFY_MESSAGES, DETECFY_PATH } from "@/lib/detecfy"
 
 export function WhatsappFloat() {
-  const isDestapefy = usePathname() === DESTAPEFY_PATH
-  const message = isDestapefy ? DESTAPEFY_MESSAGES.float : WA_MESSAGES.float
+  const pathname = usePathname()
+  const message = pathname === DETECFY_PATH
+    ? DETECFY_MESSAGES.float
+    : pathname === DESTAPEFY_PATH ? DESTAPEFY_MESSAGES.float : WA_MESSAGES.float
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
