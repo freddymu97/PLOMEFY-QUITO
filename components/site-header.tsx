@@ -6,6 +6,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, Phone, X } from "lucide-react"
 import { WhatsappButton } from "@/components/cta-buttons"
+import { ServiceLogo } from "@/components/service-logo"
 import { PHONE_DISPLAY, SITE, WA_MESSAGES, telLink } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { DESTAPEFY_MESSAGES, DESTAPEFY_PATH } from "@/lib/destapefy"
@@ -83,14 +84,18 @@ export function SiteHeader() {
       >
         <div className="container-page flex h-16 items-center gap-4 lg:h-[72px]">
           <Link href="/" onClick={() => setOpen(false)} className="shrink-0" aria-label="Plomefy — inicio">
-            <Image
-              src="/plomefy-logo.png"
-              alt="Plomefy, plomería a domicilio en Quito"
-              width={420}
-              height={123}
-              priority
-              className="h-8 w-auto sm:h-9"
-            />
+            {isDestapefy || isDetecfy ? (
+              <ServiceLogo brand={isDetecfy ? "detecfy" : "destapefy"} priority />
+            ) : (
+              <Image
+                src="/plomefy-logo.png"
+                alt="Plomefy, plomería a domicilio en Quito"
+                width={420}
+                height={123}
+                priority
+                className="h-8 w-auto sm:h-9"
+              />
+            )}
           </Link>
 
           <nav aria-label="Navegación principal" className="ml-auto hidden items-center gap-4 lg:flex">

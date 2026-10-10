@@ -14,7 +14,6 @@ import {
   MapPin,
   MessageSquareText,
   ReceiptText,
-  Search,
   Square,
   Thermometer,
   Volume2,
@@ -22,6 +21,7 @@ import {
 } from "lucide-react"
 import { CallButton, WhatsappButton } from "@/components/cta-buttons"
 import { PipeDrop } from "@/components/icons"
+import { ServiceLogo } from "@/components/service-logo"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { DESTAPEFY_PATH } from "@/lib/destapefy"
 import {
@@ -105,12 +105,8 @@ function DetecfyHero() {
           </div>
 
           <div className="min-w-0 overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-[0_30px_70px_-45px_rgba(0,51,109,.55)]">
-            <div className="flex items-center gap-3 border-b border-teal/15 bg-gradient-to-r from-teal/[0.08] to-aqua/[0.05] px-5 py-4 sm:px-7 sm:py-5">
-              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-navy"><Search className="h-5 w-5" aria-hidden="true" /></span>
-              <div>
-                <p className="font-display text-[23px] font-extrabold tracking-tight text-navy">Detec<span className="text-[#00857d]">fy</span></p>
-                <p className="text-[12px] font-medium text-slate-600">{DETECFY.tagline}</p>
-              </div>
+            <div className="border-b border-teal/15 bg-gradient-to-r from-teal/[0.08] to-aqua/[0.05] px-5 py-4 sm:px-7 sm:py-5">
+              <ServiceLogo brand="detecfy" placement="selector" />
             </div>
             <div className="p-5 sm:p-7">
               <h2 className="font-display text-[17px] font-bold text-navy">¿Qué señal has notado?</h2>
