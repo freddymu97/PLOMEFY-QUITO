@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { CallButton, WhatsappButton } from "@/components/cta-buttons"
 import { PipeDrop } from "@/components/icons"
+import { ServiceLogo } from "@/components/service-logo"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import {
   DESTAPEFY,
@@ -115,8 +116,7 @@ function DestapefyHero() {
 
           <div className="overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-[0_30px_70px_-45px_rgba(0,51,109,.55)]">
             <div className="border-b border-teal/15 bg-gradient-to-r from-teal/[0.08] to-aqua/[0.05] px-6 py-5 sm:px-7">
-              <p className="font-display text-[23px] font-extrabold tracking-tight text-navy">Destape<span className="text-[#00857d]">fy</span></p>
-              <p className="mt-0.5 text-[13px] font-medium text-slate-600">{DESTAPEFY.tagline} · Quito</p>
+              <ServiceLogo brand="destapefy" placement="selector" />
             </div>
             <div className="p-6 sm:p-7">
               <div className="flex items-center gap-2.5">
