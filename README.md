@@ -50,6 +50,7 @@ Sitio en Next.js 14 (App Router) + Tailwind. Se despliega solo en Vercel con cad
 |---|---|
 | Teléfono / WhatsApp | `lib/site.ts` → `PHONE_E164`, `PHONE_DISPLAY`, `WHATSAPP_NUMBER` |
 | Horario de atención | `lib/site.ts` → `SITE.schedule` |
+| Tarifa y alcance de la revisión del home | `lib/site.ts` → `HOME_VISIT_OFFER` |
 | Mensajes precargados de WhatsApp | `lib/site.ts` → `WA_MESSAGES` |
 | Servicios (agregar, quitar, redactar) | `lib/site.ts` → `SERVICES` |
 | Sectores y barrios de cobertura | `lib/site.ts` → `ZONES` |

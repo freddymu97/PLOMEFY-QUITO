@@ -1,5 +1,5 @@
 import { CallButton, WhatsappButton } from "@/components/cta-buttons"
-import { SITE, WA_MESSAGES } from "@/lib/site"
+import { HOME_VISIT_OFFER, SITE, WA_MESSAGES } from "@/lib/site"
 
 export function FinalCtaSection() {
   return (
@@ -12,12 +12,18 @@ export function FinalCtaSection() {
         <h2 className="mx-auto max-w-3xl font-display text-[28px] font-extrabold leading-[1.15] tracking-[-0.01em] text-white sm:text-[38px]">
           Plomero a domicilio en Quito, cuando lo necesitas
         </h2>
+        <p className="mt-5 font-display text-[24px] font-extrabold text-white sm:text-[30px]">
+          Revisión desde {HOME_VISIT_OFFER.priceDisplay}
+        </p>
+        <p className="mx-auto mt-3 max-w-xl text-[13px] leading-relaxed text-white/80 sm:text-sm">
+          {HOME_VISIT_OFFER.terms}
+        </p>
         <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-relaxed text-white/70 sm:text-[17px]">
           Destapes, fugas, sanitarios y calefones en norte, centro, sur, Cumbayá, Tumbaco y Valle de los Chillos.
           Escríbenos y coordinamos la visita.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <WhatsappButton message={WA_MESSAGES.final} label="Solicitar plomero a domicilio" />
+          <WhatsappButton message={WA_MESSAGES.final} label="Agendar mi revisión" />
           <CallButton
             className="border-white/25 bg-transparent text-white hover:border-white/60 hover:bg-white/10"
           />

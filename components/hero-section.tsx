@@ -1,7 +1,7 @@
 import { CalendarCheck, MapPin, ReceiptText, ShieldCheck } from "lucide-react"
 import { CallButton, WhatsappButton } from "@/components/cta-buttons"
 import { PipeDrop } from "@/components/icons"
-import { PHONE_DISPLAY, SITE, WA_MESSAGES, telLink, waLink } from "@/lib/site"
+import { HOME_VISIT_OFFER, PHONE_DISPLAY, SITE, WA_MESSAGES, telLink, waLink } from "@/lib/site"
 
 const QUICK = [
   { label: "Cañería tapada", msg: "Hola, tengo una cañería tapada en mi casa en Quito." },
@@ -28,7 +28,7 @@ export function HeroSection() {
       />
       <PipeDrop className="absolute -left-10 top-24 hidden h-72 w-72 text-navy/[0.05] lg:block" />
 
-      <div className="container-page relative grid items-center gap-12 py-14 sm:py-16 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:py-24">
+      <div className="container-page relative grid items-center gap-12 py-9 sm:py-16 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:py-20">
         <div>
           <p className="eyebrow">
             <span className="relative flex h-2 w-2">
@@ -43,15 +43,27 @@ export function HeroSection() {
             <br className="hidden sm:block" /> en <span className="text-teal">Quito</span>
           </h1>
 
-          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-slate-600 sm:text-lg">
-            Destape de cañerías, reparación de fugas de agua, sanitarios, grifería y calefones. Un plomero llega a tu
-            domicilio, revisa el problema y te da el presupuesto antes de empezar.
-          </p>
+          <div className="mt-6 max-w-xl rounded-2xl border border-teal/30 bg-teal/[0.07] p-4 sm:p-5" data-home-visit-offer>
+            <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1 font-display text-navy">
+              <span className="text-[15px] font-bold sm:text-xl">Revisión desde</span>
+              <strong className="text-[44px] font-extrabold leading-none tracking-[-0.04em] sm:text-[52px]">
+                {HOME_VISIT_OFFER.priceDisplay}
+              </strong>
+            </p>
+            <p className="mt-3 text-[13px] leading-relaxed text-slate-600 sm:text-sm">
+              {HOME_VISIT_OFFER.terms}
+            </p>
+          </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <WhatsappButton message={WA_MESSAGES.hero} label="Solicitar plomero" />
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <WhatsappButton message={WA_MESSAGES.hero} label="Agendar revisión" />
             <CallButton />
           </div>
+
+          <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-slate-600 sm:text-lg">
+            ¿Una fuga, una cañería tapada o un sanitario que falla? Revisamos el problema en tu domicilio y te damos
+            el presupuesto. Tú decides si hacemos el trabajo.
+          </p>
 
           {/* Número en texto plano: Google Ads lo verifica al revisar la landing. */}
           <p className="mt-4 text-[15px] text-slate-600">

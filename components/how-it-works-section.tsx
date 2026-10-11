@@ -1,6 +1,6 @@
 import { MessageSquareText, MapPinned, Wrench } from "lucide-react"
 import { WhatsappButton } from "@/components/cta-buttons"
-import { WA_MESSAGES } from "@/lib/site"
+import { HOME_VISIT_OFFER, WA_MESSAGES } from "@/lib/site"
 
 const STEPS = [
   {
@@ -11,12 +11,12 @@ const STEPS = [
   {
     icon: MapPinned,
     title: "Envías tu ubicación",
-    text: "Compartes la dirección dentro de Quito o los valles y coordinamos el horario de la visita del plomero.",
+    text: `Compartes tu dirección en Quito o los valles y coordinamos la revisión desde ${HOME_VISIT_OFFER.priceDisplay}. Esa tarifa solo cubre la visita para evaluar el problema.`,
   },
   {
     icon: Wrench,
     title: "Resolvemos en tu domicilio",
-    text: "El plomero revisa, te da el presupuesto y, con tu visto bueno, hace el trabajo y deja el área limpia.",
+    text: "El plomero evalúa el problema y cotiza el trabajo según su alcance y complejidad. Con tu aprobación, hace el trabajo y deja el área limpia.",
   },
 ]
 
