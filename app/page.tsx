@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { faqSchema, pageMetadata } from "@/lib/seo"
-import { FAQS, SITE } from "@/lib/site"
+import { FAQS, HOME_VISIT_OFFER, SITE } from "@/lib/site"
 import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
@@ -14,7 +14,7 @@ import { FinalCtaSection } from "@/components/final-cta-section"
 export const metadata: Metadata = pageMetadata({
   title: "Plomero a domicilio en Quito | Plomefy · plomería, destapes y fugas",
   description:
-    "Plomero a domicilio en Quito para destape de cañerías, reparación de fugas de agua, sanitarios, grifería y calefones. Atendemos los 7 días en norte, centro, sur y valles.",
+    `Plomero a domicilio en Quito. Revisión desde ${HOME_VISIT_OFFER.priceDisplay}: visita para evaluar el problema. Trabajo cotizado aparte según alcance y complejidad.`,
   path: "/",
   keywords: [
     "plomero a domicilio quito",

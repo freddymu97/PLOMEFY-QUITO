@@ -36,17 +36,25 @@ export const PHONE_E164 = "+593982282941"
 export const PHONE_DISPLAY = "098 228 2941"
 export const WHATSAPP_NUMBER = "593982282941"
 
+/* ---------------------------- Visita de revisión ---------------------------- */
+
+export const HOME_VISIT_OFFER = {
+  priceDisplay: "$9,99",
+  terms:
+    "Solo incluye la visita para evaluar el problema. El trabajo se cotiza aparte según su alcance y complejidad, antes de empezar.",
+} as const
+
 /**
  * Cada sección usa un saludo distinto a propósito: decenas de mensajes
  * byte-idénticos son huella de automatización y ya costaron una suspensión
  * de WhatsApp Business en agosto de 2026.
  */
 export const WA_MESSAGES = {
-  hero: "Hola, necesito un plomero a domicilio en Quito.",
+  hero: `Hola, quiero agendar una revisión de plomería desde ${HOME_VISIT_OFFER.priceDisplay} en Quito. ¿Podemos coordinar la visita?`,
   services: "Hola, quiero cotizar un trabajo de plomería en Quito.",
   coverage: "Hola, necesito un plomero en mi sector de Quito.",
   faq: "Hola, tengo una consulta sobre un trabajo de plomería.",
-  final: "Hola, quiero coordinar una visita de plomería.",
+  final: `Hola, vi la revisión de Plomefy desde ${HOME_VISIT_OFFER.priceDisplay}. Quiero coordinar una visita para evaluar mi problema de plomería.`,
   float: "Hola, necesito ayuda con un problema de plomería.",
 } as const
 
@@ -179,7 +187,7 @@ export const FAQS = [
   },
   {
     q: "¿Cuánto cuesta el servicio de plomería?",
-    a: "Depende del trabajo y de lo que encontremos en sitio. La regla es simple: revisamos, te damos el presupuesto y recién ahí empezamos. Los materiales se cotizan aparte.",
+    a: `La revisión es desde ${HOME_VISIT_OFFER.priceDisplay} y solo incluye la visita para evaluar el problema. El costo final del trabajo se cotiza aparte según su alcance y complejidad. Te damos el presupuesto y empezamos con tu aprobación. Los materiales se cotizan aparte.`,
   },
   {
     q: "¿A qué sectores de Quito llegan?",

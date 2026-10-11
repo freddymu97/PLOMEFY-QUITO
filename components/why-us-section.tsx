@@ -18,7 +18,7 @@ export function WhyUsSection() {
       <PipeDrop className="absolute -right-16 -top-10 h-[420px] w-[420px] text-white/[0.04]" />
       <div className="container-page relative">
         <div className="max-w-2xl">
-          <p className="inline-flex items-center rounded-full border border-teal/40 bg-teal/15 px-3 py-1 text-[13px] font-semibold text-teal">
+          <p className="inline-flex items-center rounded-full border border-teal/40 bg-teal/15 px-3 py-1 text-[13px] font-semibold text-white">
             Por qué Plomefy
           </p>
           <h2 className="mt-4 font-display text-[26px] font-bold leading-[1.2] tracking-[-0.01em] sm:text-[32px] lg:text-[38px]">
