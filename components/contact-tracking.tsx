@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { DESTAPEFY_PATH } from "@/lib/destapefy"
 import { DETECFY_PATH } from "@/lib/detecfy"
+import { DETECFY_ECUADOR_PATH } from "@/lib/detecfy-ecuador"
 
 declare global {
   interface Window {
@@ -28,7 +29,9 @@ export function ContactTracking() {
       window.dataLayer.push({
         event: "contact_click",
         contact_method: isWhatsapp ? "whatsapp" : "phone",
-        service_name: pathname === DETECFY_PATH ? "detecfy" : pathname === DESTAPEFY_PATH ? "destapefy" : "plomefy",
+        service_name: pathname === DETECFY_PATH || pathname === DETECFY_ECUADOR_PATH
+          ? "detecfy"
+          : pathname === DESTAPEFY_PATH ? "destapefy" : "plomefy",
         page_path: pathname,
         cta_location:
           link.dataset.ctaLocation ||

@@ -7,12 +7,14 @@ import { WhatsappIcon } from "@/components/icons"
 import { PHONE_DISPLAY, WA_MESSAGES, telLink, waLink } from "@/lib/site"
 import { DESTAPEFY_MESSAGES, DESTAPEFY_PATH } from "@/lib/destapefy"
 import { DETECFY_MESSAGES, DETECFY_PATH } from "@/lib/detecfy"
+import { DETECFY_ECUADOR_MESSAGES, DETECFY_ECUADOR_PATH } from "@/lib/detecfy-ecuador"
 
 export function WhatsappFloat() {
   const pathname = usePathname()
-  const message = pathname === DETECFY_PATH
-    ? DETECFY_MESSAGES.float
-    : pathname === DESTAPEFY_PATH ? DESTAPEFY_MESSAGES.float : WA_MESSAGES.float
+  const message = pathname === DETECFY_ECUADOR_PATH
+    ? DETECFY_ECUADOR_MESSAGES.float
+    : pathname === DETECFY_PATH ? DETECFY_MESSAGES.float
+      : pathname === DESTAPEFY_PATH ? DESTAPEFY_MESSAGES.float : WA_MESSAGES.float
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {

@@ -128,6 +128,24 @@ Los clics de contacto generan en `window.dataLayer` el evento `contact_click`, c
 Son eventos de intención de contacto; para enviarlos a Google Ads o GA4 hay que conectar
 el contenedor o propiedad real y configurar las etiquetas. No se carga un ID inventado.
 
+### Detecfy en Ecuador
+
+La landing `/detecciondefugasdeaguaecuador` está preparada como destino para campañas
+de detección de fugas de agua a nivel nacional. Conserva la identidad de Detecfy y
+los teléfonos de Plomefy, con cobertura en ciudades, cantones y parroquias de Ecuador;
+destaca Pichincha, Tungurahua (Ambato) y Chimborazo (Riobamba).
+
+El contenido de campaña, los mensajes de WhatsApp, las zonas y las FAQ se definen en
+`lib/detecfy-ecuador.ts`; el diseño está en `components/detecfy-ecuador-landing.tsx`
+y los metadatos en `app/detecciondefugasdeaguaecuador/page.tsx`. La página solicita
+una cotización personalizada sin publicar importes, también en sus metadatos y
+datos estructurados. El método y el traslado se coordinan según la instalación y
+la ubicación. La página local de Quito conserva su contenido y tarifa.
+
+Los eventos de contacto usan `service_name: "detecfy"` y el `page_path` nacional
+para distinguirlos de las consultas de Quito. La ruta se incluye en el sitemap y
+se enlaza desde el pie de página. Las pruebas SEO cubren ambas versiones.
+
 ---
 
 ## 🧑‍💻 Correr el proyecto en local

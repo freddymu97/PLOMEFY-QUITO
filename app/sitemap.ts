@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 import { SITE } from "@/lib/site"
 import { DESTAPEFY_PATH } from "@/lib/destapefy"
 import { DETECFY_PATH } from "@/lib/detecfy"
+import { DETECFY_ECUADOR_PATH } from "@/lib/detecfy-ecuador"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -19,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE.url}${DETECFY_PATH}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE.url}${DETECFY_ECUADOR_PATH}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,

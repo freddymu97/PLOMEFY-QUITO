@@ -11,6 +11,7 @@ import { PHONE_DISPLAY, SITE, WA_MESSAGES, telLink } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { DESTAPEFY_MESSAGES, DESTAPEFY_PATH } from "@/lib/destapefy"
 import { DETECFY_MESSAGES, DETECFY_PATH } from "@/lib/detecfy"
+import { DETECFY_ECUADOR_MESSAGES, DETECFY_ECUADOR_PATH } from "@/lib/detecfy-ecuador"
 
 const NAV = [
   { href: "#servicios", label: "Servicios" },
@@ -24,12 +25,15 @@ const NAV = [
 export function SiteHeader() {
   const pathname = usePathname()
   const isDestapefy = pathname === DESTAPEFY_PATH
-  const isDetecfy = pathname === DETECFY_PATH
-  const serviceMessages = isDetecfy ? DETECFY_MESSAGES : isDestapefy ? DESTAPEFY_MESSAGES : null
+  const isDetecfyEcuador = pathname === DETECFY_ECUADOR_PATH
+  const isDetecfy = pathname === DETECFY_PATH || isDetecfyEcuador
+  const serviceMessages = isDetecfyEcuador
+    ? DETECFY_ECUADOR_MESSAGES
+    : isDetecfy ? DETECFY_MESSAGES : isDestapefy ? DESTAPEFY_MESSAGES : null
   const nav = serviceMessages
     ? [
         { href: "#servicios", label: isDetecfy ? "Detección" : "Destapes" },
-        { href: "#tarifas", label: "Tarifas" },
+        { href: isDetecfyEcuador ? "#cotizacion" : "#tarifas", label: isDetecfyEcuador ? "Cotización" : "Tarifas" },
         { href: "#cobertura", label: "Cobertura" },
         { href: "#preguntas", label: "Preguntas" },
       ]
@@ -67,7 +71,7 @@ export function SiteHeader() {
         <div className="container-page flex h-9 items-center justify-between text-[13px]">
           <p className="font-medium text-white/85">{SITE.schedule}</p>
           <div className="flex items-center gap-5">
-            <span className="text-white/70">Quito · norte, centro, sur y valles</span>
+            <span className="text-white/70">{isDetecfyEcuador ? "Ecuador · ciudades, cantones y parroquias" : "Quito · norte, centro, sur y valles"}</span>
             <a href={telLink} className="inline-flex items-center gap-1.5 font-semibold hover:text-teal">
               <Phone className="h-3.5 w-3.5" />
               {PHONE_DISPLAY}
