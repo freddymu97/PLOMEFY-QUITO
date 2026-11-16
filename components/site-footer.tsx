@@ -1,27 +1,39 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Mail, MapPin, Phone } from "lucide-react"
+import { ServiceLogo } from "@/components/service-logo"
 import { PHONE_DISPLAY, SERVICES, SITE, ZONES, telLink } from "@/lib/site"
 import { DESTAPEFY_PATH } from "@/lib/destapefy"
 import { DETECFY_PATH } from "@/lib/detecfy"
+import { DETECFY_ECUADOR_PATH, DETECFY_ECUADOR_ZONES } from "@/lib/detecfy-ecuador"
 
 export function SiteFooter() {
+  const isDetecfyEcuador = usePathname() === DETECFY_ECUADOR_PATH
+  const zones = isDetecfyEcuador ? DETECFY_ECUADOR_ZONES : ZONES
   const year = new Date().getFullYear()
 
   return (
     <footer className="border-t border-slate-200 bg-white">
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         <div className="sm:col-span-2 lg:col-span-1">
-          <Image
-            src="/plomefy-logo.png"
-            alt="Plomefy"
-            width={420}
-            height={123}
-            className="h-9 w-auto"
-          />
+          {isDetecfyEcuador ? (
+            <ServiceLogo brand="detecfy" />
+          ) : (
+            <Image
+              src="/plomefy-logo.png"
+              alt="Plomefy"
+              width={420}
+              height={123}
+              className="h-9 w-auto"
+            />
+          )}
           <p className="mt-4 max-w-xs text-[14.5px] leading-relaxed text-slate-600">
-            Plomeros a domicilio en Quito para destapes de cañerías, fugas de agua, sanitarios, calefones y
-            mantenimiento de tus instalaciones.
+            {isDetecfyEcuador
+              ? "Detecfy, detección de fugas de agua de Plomefy en Ecuador. Viajamos con nuestros equipos a ciudades, cantones y parroquias para revisar tu instalación."
+              : "Plomeros a domicilio en Quito para destapes de cañerías, fugas de agua, sanitarios, calefones y mantenimiento de tus instalaciones."}
           </p>
           <p className="mt-4 text-[13.5px] font-medium text-navy">{SITE.schedule}</p>
         </div>
@@ -29,7 +41,16 @@ export function SiteFooter() {
         <div>
           <h3 className="font-display text-[15px] font-bold text-navy">Servicios</h3>
           <ul className="mt-4 space-y-2">
-            {SERVICES.map((s) => (
+            {isDetecfyEcuador ? [
+              { href: "#servicios", label: "Localización de fugas ocultas" },
+              { href: "#como-funciona", label: "Geófono y cámara termográfica" },
+              { href: "#cotizacion", label: "Cotiza tu detección" },
+              { href: "#cobertura", label: "Cobertura nacional" },
+            ].map((item) => (
+              <li key={item.href}>
+                <a href={item.href} className="text-[14px] text-slate-600 transition-colors hover:text-navy">{item.label}</a>
+              </li>
+            )) : SERVICES.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={s.slug === "destape-de-canerias" ? DESTAPEFY_PATH : s.slug === "deteccion-de-fugas" ? DETECFY_PATH : "/#servicios"}
@@ -39,13 +60,18 @@ export function SiteFooter() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href={DETECFY_ECUADOR_PATH} className="text-[14px] text-slate-600 transition-colors hover:text-navy">
+                Detecfy · Detección de fugas de agua en Ecuador
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div>
           <h3 className="font-display text-[15px] font-bold text-navy">Cobertura</h3>
           <ul className="mt-4 space-y-3">
-            {ZONES.map((z) => (
+            {zones.map((z) => (
               <li key={z.name}>
                 <span className="block text-[14px] font-semibold text-slate-700">{z.name}</span>
                 <span className="text-[13px] leading-relaxed text-slate-500">{z.areas.join(", ")}</span>
@@ -71,7 +97,7 @@ export function SiteFooter() {
             </li>
             <li className="flex items-start gap-2.5">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-              <span>Quito, Pichincha — Ecuador</span>
+              <span>{isDetecfyEcuador ? "Servicio de detección en todo Ecuador" : "Quito, Pichincha — Ecuador"}</span>
             </li>
           </ul>
         </div>
@@ -80,9 +106,9 @@ export function SiteFooter() {
       <div className="border-t border-slate-100">
         <div className="container-page flex flex-col gap-2 py-6 text-[13px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {SITE.brand}. Plomería a domicilio en Quito.
+            © {year} {SITE.brand}. {isDetecfyEcuador ? "Detecfy · Detección de fugas en Ecuador." : "Plomería a domicilio en Quito."}
           </p>
-          <p>Norte · Centro · Sur · Cumbayá · Tumbaco · Valle de los Chillos</p>
+          <p>{isDetecfyEcuador ? "Ciudades · Cantones · Parroquias · Todo Ecuador" : "Norte · Centro · Sur · Cumbayá · Tumbaco · Valle de los Chillos"}</p>
         </div>
       </div>
     </footer>
